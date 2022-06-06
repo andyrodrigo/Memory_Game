@@ -8,6 +8,13 @@ img{
     height: 150px;
 }
 
+header{
+    display: flex;
+    background-color: goldenrod;
+    color: purple;
+    justify-content: space-around;
+}
+
 .flex{
     max-width: 1000px;
     padding: 10px;
