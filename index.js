@@ -24,12 +24,48 @@ pkball[18] = document.getElementById("pk18")
 let pokemon = new Array(18)
 pokemon = [1,2,3,4,5,6,7,8,9,9,8,7,6,5,4,3,2,1]
 
+function mostraPokemon(ordem, interior){
 
+    switch(interior){
+        case 1:
+            pkball[ordem].style.backgroundImage = 'url("imagens/001.png")'
+            break;
+        case 2:
+            pkball[ordem].style.backgroundImage = 'url("imagens/004.png")'
+            break;    
+        case 3:
+            pkball[ordem].style.backgroundImage = 'url("imagens/007.png")'
+            break;
+        case 4:
+            pkball[ordem].style.backgroundImage = 'url("imagens/025.png")'
+            break;
+        case 5:
+            pkball[ordem].style.backgroundImage = 'url("imagens/029.png")'
+            break;
+        case 6:
+            pkball[ordem].style.backgroundImage = 'url("imagens/032.png")'
+            break;
+        case 7:
+            pkball[ordem].style.backgroundImage = 'url("imagens/052.png")'
+            break;
+        case 8:
+            pkball[ordem].style.backgroundImage = 'url("imagens/133.png")'
+            break;
+        case 9:
+            pkball[ordem].style.backgroundImage = 'url("imagens/147.png")'
+            break;
+        default:
+            alert("erro")            
+    }
+
+    alert("numero: " + ordem + " interior: " + interior)
+
+}
 
 function mostra(num){
-    let interior = Number(num)
-
-    alert("numero: " + interior)
+    let ordem= Number(num)
+    let interior = Number(pokemon[ordem-1])
+    mostraPokemon(ordem, interior)
 
 }
 
