@@ -27,8 +27,19 @@ header{
 }
 
 .item{
-    background-color: aqua;
+    width: 150px;
+    height: 150px;
+    background-image: url("imagens/pkball.png");
+    background-color: #fff;
     border: 1px solid black;
     /*margin: auto;*/
     /*outline: 10px;*/
+}
+
+.item:hover{
+    background-color: #ccc;
+}
+
+.secreta{
+    opacity: 0;;
 }
