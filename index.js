@@ -117,14 +117,19 @@ function testaPkball(ordem, interior){
         mostraPokemon(ordem, interior)
 
         //alert("numero: " + ordem + " interior: " + interior)
+
+        //if true? esse :else este
+        paridade? confereParidade(interior, ordem) : buscaParidade(interior, ordem)
+/*
         if(paridade == false){
             buscaParidade(interior, ordem)
         }else{
             confereParidade(interior, ordem)
-        }
+        }*/
 
     }else{
        // alert("Já foi clicada")
+       tentativa = false // libera para tentar de novo
     }
 
 }
