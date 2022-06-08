@@ -29,7 +29,7 @@ header{
 .item{
     width: 150px;
     height: 150px;
-    background-image: url("imagens/pokeball.png");
+    background-image: url("imagens/pokeball.png") ;
     background-size: 150px;
     background-color: #fff;
     border: 1px solid black;

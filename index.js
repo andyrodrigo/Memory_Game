@@ -22,10 +22,58 @@ pkball[17] = document.getElementById("pk17")
 pkball[18] = document.getElementById("pk18")
 
 let pokemon = new Array(18)
+let box = new Array(18)
 pokemon = [1,2,3,4,5,6,7,8,9,9,8,7,6,5,4,3,2,1]
+box =     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-function mostraPokemon(ordem, interior){
+let tentativa = false
+let paridade = false
+let memInterior = 0
+let memOrdem
 
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+}
+
+function buscaParidade(interior, ordem){
+    //alert("procura o par")
+    paridade = true;
+    memInterior = interior
+    memOrdem = ordem
+    tentativa = false // libera para tentar de novo
+    //alert(memOrdem)
+}
+
+async function retornar(ordem){
+    pkball[memOrdem].style.backgroundImage = 'url("imagens/pokeball.png")'
+    pkball[ordem].style.backgroundImage = 'url("imagens/pokeball.png")'
+    box[ordem-1] = 0
+    box[memOrdem-1] = 0
+    tentativa = false // libera para tentar de novo
+}
+
+function alertar(num) {
+    alert('foi' + num)
+  }
+
+function confereParidade(interior, ordem){
+    if(memInterior == interior){
+        //alert("você acertou")
+        tentativa = false // libera para tentar de novo
+    }else{
+        //alert("errou!")
+        setTimeout(function(){retornar(ordem)} , 1000);
+        //sleep(5000)
+    }
+    paridade = false;
+}
+
+async function mostraPokemon(ordem, interior){
     switch(interior){
         case 1:
             pkball[ordem].style.backgroundImage = 'url("imagens/001.png")'
@@ -57,15 +105,39 @@ function mostraPokemon(ordem, interior){
         default:
             alert("erro")            
     }
+}
 
-    alert("numero: " + ordem + " interior: " + interior)
+
+function testaPkball(ordem, interior){
+
+    //Confere se caixa já foi clicada
+    if( box[ordem-1] == 0){//não clicada ainda
+        box[ordem-1] = 1
+
+        mostraPokemon(ordem, interior)
+
+        //alert("numero: " + ordem + " interior: " + interior)
+        if(paridade == false){
+            buscaParidade(interior, ordem)
+        }else{
+            confereParidade(interior, ordem)
+        }
+
+    }else{
+       // alert("Já foi clicada")
+    }
 
 }
 
 function mostra(num){
-    let ordem= Number(num)
-    let interior = Number(pokemon[ordem-1])
-    mostraPokemon(ordem, interior)
+    if(tentativa == false){
+        tentativa = true
+        let ordem= Number(num)
+        let interior = Number(pokemon[ordem-1])
+        testaPkball(ordem, interior)
+    }else{
+        //sem efeito
+    }
 
 }
 
