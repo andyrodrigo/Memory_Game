@@ -1,5 +1,28 @@
 //Variáveis-------------------------------------------
 
+let btn = document.getElementById("btn")
+let reinicio = document.getElementById("reinicio")
+let jogo = true
+let pontos = 0
+let erros = 0
+let tentativa = false
+let paridade = false
+let memInterior = 0
+let memOrdem
+
+
+let luvdisk = new Array(10)
+luvdisk[1] = document.getElementById("L1")
+luvdisk[2] = document.getElementById("L2")
+luvdisk[3] = document.getElementById("L3")
+luvdisk[4] = document.getElementById("L4")
+luvdisk[5] = document.getElementById("L5")
+luvdisk[6] = document.getElementById("L6")
+luvdisk[7] = document.getElementById("L7")
+luvdisk[8] = document.getElementById("L8")
+luvdisk[9] = document.getElementById("L9")
+luvdisk[10] = document.getElementById("L10")
+
 let pkball = new Array(18)
 
 pkball[1] = document.getElementById("pk01")
@@ -26,10 +49,7 @@ let box = new Array(18)
 pokemon = [1,2,3,4,5,6,7,8,9,9,8,7,6,5,4,3,2,1]
 box =     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-let tentativa = false
-let paridade = false
-let memInterior = 0
-let memOrdem
+
 
 function sleep(milliseconds) {
     var start = new Date().getTime();
@@ -38,6 +58,31 @@ function sleep(milliseconds) {
         break;
       }
     }
+}
+
+function iniciar(){
+    ajustaCenario()
+    jogo = true
+}
+
+function ajustaCenario(){
+    reinicio.style.display = 'none';
+    pontos = 0
+    erros = 0
+    tentativa = false
+    paridade = false
+    embaralhar()
+    for(i=1; i<=10 ; i++){
+        luvdisk[i].style.display = 'block';
+    }
+    for(i=0; i<18 ; i++){
+        box[i] = 0
+        pkball[i+1].style.backgroundImage = 'url("imagens/pokeball.png")'
+    }
+}
+
+function embaralhar(){
+    pokemon.sort(()=> Math.random() - 0.5);
 }
 
 function buscaParidade(interior, ordem){
@@ -59,18 +104,36 @@ async function retornar(ordem){
 
 function alertar(num) {
     alert('foi' + num)
-  }
+}
+
+function fimDojogo(){
+    if(pontos == 9){
+        alert('Parabéns')
+    }else if(erros == 10){
+        reinicio.style.display = 'block';
+        jogo = false
+        //alert('Você perdeu')
+    }
+}
+
+function apagaCoracao(){
+    luvdisk[erros].style.display = 'none';
+}
 
 function confereParidade(interior, ordem){
     if(memInterior == interior){
         //alert("você acertou")
+        pontos++
         tentativa = false // libera para tentar de novo
     }else{
         //alert("errou!")
+        erros++
+        apagaCoracao()
         setTimeout(function(){retornar(ordem)} , 1000);
         //sleep(5000)
     }
     paridade = false;
+    fimDojogo()
 }
 
 async function mostraPokemon(ordem, interior){
@@ -135,19 +198,27 @@ function testaPkball(ordem, interior){
 }
 
 function mostra(num){
-    if(tentativa == false){
-        tentativa = true
-        let ordem= Number(num)
-        let interior = Number(pokemon[ordem-1])
-        testaPkball(ordem, interior)
-    }else{
-        //sem efeito
-    }
+    if(jogo){
+        if(tentativa == false){
+            tentativa = true
+            let ordem= Number(num)
+            let interior = Number(pokemon[ordem-1])
+            testaPkball(ordem, interior)
+        }else{
+            //sem efeito
+        }
 
+    }else{
+        //fim de jogo
+    }
 }
+
+
 
 //Escutadores---------------------------------------------------------------------------
 function escutadores(){
+    reinicio.addEventListener('click', iniciar)
+    btn.addEventListener('click', embaralhar)
     //submit.addEventListener('click', enviar)
     pkball[1].addEventListener('click', function(){mostra("1")})
     pkball[2].addEventListener('click', function(){mostra("2")})
@@ -174,3 +245,4 @@ function escutadores(){
 
 //inicialização
 window.addEventListener("load", escutadores)
+window.addEventListener("load", embaralhar)
