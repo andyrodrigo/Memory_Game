@@ -2,8 +2,9 @@
 
 let restart = document.getElementById("restart")
 let reinicio = document.getElementById("reinicio")
+let venceu = document.getElementById("venceu")
 let jogo = true
-let pontos = 0
+let pontos = 8
 let erros = 0
 let tentativa = false
 let paridade = false
@@ -65,6 +66,7 @@ function sleep(milliseconds) {
 function iniciar(){
     ajustaCenario()
     jogo = true
+    venceu.style.display = "none";
 }
 
 function ajustaCenario(){
@@ -110,7 +112,8 @@ function alertar(num) {
 
 function fimDojogo(){
     if(pontos == 9){
-        alert('Parabéns')
+        venceu.style.display = "flex";
+        //alert('Parabéns')
     }else if(erros == 10){
         reinicio.style.display = 'block';
         jogo = false
