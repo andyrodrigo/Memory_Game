@@ -13,13 +13,20 @@
 <body>
 
     <header>
-        <h1>Jogo da Memória</h1>
+        
+        <audio controls autoplay>
+            <source src="som/battle.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
 
-        <div>
-            <button id="btn">embaralha</button>
-            <p>Reiniciar</p>
-            <p>Settings</p>
-        </div>
+        <h1> JOGO DA MEMÓRIA </h1>
+
+        <nav>
+            <p id="restart" class="conf" >REINICIAR</button>
+            <p id="tema" class="conf">TEMA</button>
+            <p id="sobre" class="conf">SOBRE</button>
+ 
+        </nav>
     </header>
 
     <section>
@@ -61,7 +68,13 @@
 
     </section>
 
+    <footer>
+        <p>Desenvolvido por Anderson Benício</p>
+    </footer>
+
 </body>
+
+
 
 <script src="index.js"></script>
 

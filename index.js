@@ -1,6 +1,6 @@
 //Variáveis-------------------------------------------
 
-let btn = document.getElementById("btn")
+let restart = document.getElementById("restart")
 let reinicio = document.getElementById("reinicio")
 let jogo = true
 let pontos = 0
@@ -9,6 +9,8 @@ let tentativa = false
 let paridade = false
 let memInterior = 0
 let memOrdem
+
+var snd = new Audio("som/pokeballcut.mp3");
 
 
 let luvdisk = new Array(10)
@@ -94,7 +96,7 @@ function buscaParidade(interior, ordem){
     //alert(memOrdem)
 }
 
-async function retornar(ordem){
+function retornar(ordem){
     pkball[memOrdem].style.backgroundImage = 'url("imagens/pokeball.png")'
     pkball[ordem].style.backgroundImage = 'url("imagens/pokeball.png")'
     box[ordem-1] = 0
@@ -170,12 +172,24 @@ async function mostraPokemon(ordem, interior){
     }
 }
 
+function paraSom(){
+    snd.pause()
+    snd.currentTime=0;
+}
+
+function toca(){
+    snd.play();
+}
+
 
 function testaPkball(ordem, interior){
 
     //Confere se caixa já foi clicada
     if( box[ordem-1] == 0){//não clicada ainda
         box[ordem-1] = 1
+
+        snd.currentTime=0;
+        snd.play();
 
         mostraPokemon(ordem, interior)
 
@@ -218,7 +232,7 @@ function mostra(num){
 //Escutadores---------------------------------------------------------------------------
 function escutadores(){
     reinicio.addEventListener('click', iniciar)
-    btn.addEventListener('click', embaralhar)
+    restart.addEventListener('click', iniciar)
     //submit.addEventListener('click', enviar)
     pkball[1].addEventListener('click', function(){mostra("1")})
     pkball[2].addEventListener('click', function(){mostra("2")})

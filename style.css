@@ -1,5 +1,5 @@
 *{
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     margin: 0;
     padding: 0;
     border: 0;
@@ -8,15 +8,39 @@
 
 header{
     display: flex;
-    background-color: rgb(41, 47, 59);
+    flex-wrap: wrap;
+    background-color: rgb(34, 38, 46);
     color: white;
     justify-content: space-around;
+    align-content: center;
 }
 
 h1{
-    background-color: black;
-    
+    /*background-color: black;*/
+    align-self: center;
+    padding: 10px ;
+    font-family: monospace;
 }
+
+nav{
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    font-size: larger;
+    font-family: monospace;
+}
+
+.conf{
+    padding: 10px;
+    /*background-color: aquamarine;*/
+}
+
+.conf:hover{
+    color: black;
+    background-color: #ccc;
+} 
 
 section{
     background-image: url("imagens/BG-arena.png");
@@ -60,9 +84,11 @@ img{
     height: 150px;
     background-image: url("imagens/pokeball.png") ;
     background-size: 150px;
-    background-color: #fff;*/
-   /* border: 1px solid black;*/
-    /*margin: auto;*/
+    
+    background-color: rgb(34, 38, 46);
+   /* border: 1px solid black;
+   background-color: #fff;
+    margin: auto;
     /*outline: 10px;*/
 }
 
@@ -70,6 +96,23 @@ img{
     background-color: #ccc;
 }
 
-.secreta{
-    opacity: 0;;
+.abrindo {
+    animation-name: example;
+    animation-duration: 0.5s;
 }
+  
+  @keyframes example {
+    from {background-color: #ccc;}
+    to {background-color: yellow;}
+  }
+
+footer{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(34, 38, 46);
+    color: white;
+    padding: 10px;
+    font-size: larger;
+    font-family: monospace;
+}
+
