@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="imagens/favicon.jpg">
 
     <title>Jogo da Memória</title>
 
@@ -13,13 +14,30 @@
 <body>
 
     <header>
+
+        <h1> JOGO DA MEMÓRIA </h1>
         
-        <audio controls autoplay>
-            <source src="som/battle.mp3" type="audio/mpeg">
+        <audio id="musica1" loop>
+            <source  src="som/bike.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
-        <h1> JOGO DA MEMÓRIA </h1>
+        <audio id="musica2" loop>
+            <source  src="som/mainpk.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="musica3" loop>
+            <source  src="som/kanto.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="musica4" loop>
+            <source  src="som/battle.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        
 
         <nav>
             <p id="restart" class="conf" >REINICIAR</button>
@@ -35,7 +53,22 @@
         <p>PARABÉNS!</p>
     </div>
 
-    <section>
+    <div id="pokedex" class="boxFlutuante">
+        <div>
+            <h2>SELECIONE O TEMA DESEJADO</h2>
+        </div>
+
+        <p id="cancelar" class='linha'>Cancelar</p>
+        <p id='arena1' class='linha'>1. Pikachu (Fácil)</p>
+        <p id='arena2' class='linha'>2. Pokemons Iniciais (Médio)</p>
+        <p id='arena3' class='linha'>3. Região Kanto (Difícil)</p>
+        <p id='arena4' class='linha'>4. Arena (Desafiador)</p>
+
+        <div id="tela"></div>
+        
+    </div>
+
+    <section id="fundo">
         <div id="energia">
             <button id="reinicio">TENTAR NOVAMENTE</button>
             <img src="imagens/370.png" alt="imagem do Luvdisk" class='life' id="L1">
@@ -48,9 +81,14 @@
             <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L8">
             <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L9">
             <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L10">
+            <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L11">
+            <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L12">
+            <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L13">
+            <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L14">
+            <img src="imagens/370.png" alt="imagem do Luvdisk" class="life" id="L15">
         </div>
     
-        <div class="flex">
+        <div id="caixa" class="flex">
             <div id="pk01" class="item"></div>
             <div id="pk02" class="item"></div>
             <div id="pk03" class="item"></div>

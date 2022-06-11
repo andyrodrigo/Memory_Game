@@ -3,21 +3,24 @@
 //botões do jogo
 let restart = document.getElementById("restart") // Na navegação
 let reinicio = document.getElementById("reinicio") //Só aparece ao perder
+let tema = document.getElementById("tema") //Abre menu de temas com a pokedex
+let pokedex= document.getElementById("pokedex") //Menu de arenas
+let cancelar= document.getElementById("cancelar") //
+let arena1= document.getElementById("arena1") //
+let arena2= document.getElementById("arena2") //
+let arena3= document.getElementById("arena3") //
+let arena4= document.getElementById("arena4") //
 
 //controles do jogo
 let jogo = true //diz se o jogo está ativo
 let pontos = 0 //pontuação para a vitória
-let erros = 0 //quantidade de erros para perder
+let erros = 0 //quantidade de erros atual
+let totalErros = 8 //quantidade de erros para perder
 let tentativa = false //controla o tempo de clique, evita descontrole
 let paridade = false //indica se é o momento de procurar um par
 let memInterior = 0 //guarda o valor do interior da bola que se procura o par
 let memOrdem //guarda o valor da posição da bola que se procura o par
-
-
 let tematica = 'arena'
-//let bola = 'url("imagens/pokeball.png")'
-//let bola = 'url("imagens/fastball.png")'
-//let bola = 'url("imagens/greatball.png")'
 let bola = 'url("imagens/ultraball.png")'
 
 //sons ao mostrar cada pokemon
@@ -33,9 +36,16 @@ let ei = new Audio("som/ei.mp3");
 
 //Imagens da tela
 let venceu = document.getElementById("venceu") // Imagem de vitória final
+let fundo = document.getElementById("fundo") // Fundo da tela
+let caixa = document.getElementById("caixa") // caixa da pokebolas
+let energia = document.getElementById("energia") //  caixa dos Luvdisks
+let musica1 = document.getElementById("musica1")
+let musica2 = document.getElementById("musica2")
+let musica3 = document.getElementById("musica3")
+let musica4 = document.getElementById("musica4")
 
 //Imagens das quantidades de tentativas do jogo
-let luvdisk = new Array(10) //Cada elemento é um Luvdisk da tela
+let luvdisk = new Array(15) //Cada elemento é um Luvdisk da tela
 luvdisk[1] = document.getElementById("L1")
 luvdisk[2] = document.getElementById("L2")
 luvdisk[3] = document.getElementById("L3")
@@ -46,6 +56,11 @@ luvdisk[7] = document.getElementById("L7")
 luvdisk[8] = document.getElementById("L8")
 luvdisk[9] = document.getElementById("L9")
 luvdisk[10] = document.getElementById("L10")
+luvdisk[11] = document.getElementById("L11")
+luvdisk[12] = document.getElementById("L12")
+luvdisk[13] = document.getElementById("L13")
+luvdisk[14] = document.getElementById("L14")
+luvdisk[15] = document.getElementById("L15")
 
 //Imagens das pokebolas
 let pkball = new Array(18) //Cada elemento é uma pokebola da tela
@@ -78,6 +93,91 @@ box =     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 //Funções----------------------------------------------------------
 
+//Seleciona Tema do Jogo de acordo com a opção escolhida
+function mudaTema(num){
+    switch(num){
+        case 1: 
+            bola = 'url("imagens/fastball.png")'
+            fundo.style.backgroundImage = 'url("imagens/BG-pikachu.jpg")'
+            caixa.style.backgroundImage = 'linear-gradient(to top right, white , red )'
+            energia.style.backgroundColor = 'transparent'
+            energia.style.width = '100%'
+            musica1.controls = true;
+            musica1.play()
+            musica2.controls = false;
+            musica2.pause()
+            musica3.controls = false;
+            musica3.pause()
+            musica4.controls = false;
+            musica4.pause()
+            totalErros = 15
+            break;
+        case 2: 
+           bola = 'url("imagens/pokeball.png")'
+           fundo.style.backgroundImage = 'url("imagens/BG-iniciais.jpg")'
+           caixa.style.backgroundImage = 'linear-gradient(to right, blue ,rgb(73, 136, 136), red , yellow, rgb(118, 218, 88), green)'
+           energia.style.backgroundColor = 'transparent'
+           energia.style.width = '100%'
+           musica1.controls = false;
+           musica1.pause()
+           musica2.controls = true;
+           musica2.play()
+           musica3.controls = false;
+           musica3.pause()
+           musica4.controls = false;
+           musica4.pause()
+           totalErros = 12
+           break;    
+        case 3: 
+           bola = 'url("imagens/greatball.png")'
+           fundo.style.backgroundImage = 'url("imagens/BG-kanto.png")'
+           caixa.style.backgroundImage = 'none'
+           caixa.style.backgroundColor = 'white'
+           energia.style.backgroundColor = 'white'
+           energia.style.width = '38%'
+           musica1.controls = false;
+           musica1.pause()
+           musica2.controls = false;
+           musica2.pause()
+           musica3.controls = true;
+           musica3.play()
+           musica4.controls = false;
+           musica4.pause()
+           totalErros = 10
+           break;
+        case 4: 
+            bola = 'url("imagens/ultraball.png")'
+            fundo.style.backgroundImage = 'url("imagens/BG-arena.png")'
+            caixa.style.backgroundImage = 'none'
+            caixa.style.backgroundColor = 'rgb(34, 38, 46)'
+            energia.style.backgroundColor = 'transparent'
+            energia.style.width = '100%'
+            musica1.controls = false;
+            musica1.pause()
+            musica2.controls = false;
+            musica2.pause()
+            musica3.controls = false;
+            musica3.pause()
+            musica4.controls = true;
+            musica4.play()
+            totalErros = 8
+            break;
+        default:
+            alert("erro")            
+    }
+    cancela()
+    iniciar()
+}
+
+//Tira a pokedex da frente
+function cancela(){
+   pokedex.style.display = 'none'
+}
+
+function escolheTemas(){
+    pokedex.style.display = 'inline'
+}
+
 //Chamada para iniciar ou reiniciar o jogo
 function iniciar(){
     ajustaCenario()
@@ -93,8 +193,12 @@ function ajustaCenario(){
     tentativa = false
     paridade = false
     embaralhar()
-    for(i=1; i<=10 ; i++){
-        luvdisk[i].style.display = 'block';
+    for(i=1; i<=15 ; i++){
+        if(i<=totalErros){
+            luvdisk[i].style.display = 'block';
+        }else{
+            luvdisk[i].style.display = 'none';
+        }    
     }
     for(i=0; i<18 ; i++){
         box[i] = 0
@@ -223,7 +327,7 @@ function retornar(ordem){
 function fimDojogo(){
     if(pontos == 9){ //Venceu o jogo
         venceu.style.display = "flex"; //Exibe imagem de vitória
-    }else if(erros == 10){ //Perdeu o jogo
+    }else if(erros == totalErros){ //Perdeu o jogo
         reinicio.style.display = 'block'; //Mostra botão de reinicio
         jogo = false //Paralisa o jogo
     }
@@ -233,6 +337,12 @@ function fimDojogo(){
 function escutadores(){
     reinicio.addEventListener('click', iniciar)
     restart.addEventListener('click', iniciar)
+    cancelar.addEventListener('click', cancela)
+    tema.addEventListener('click', escolheTemas)
+    arena1.addEventListener('click', function(){mudaTema(1)})
+    arena2.addEventListener('click', function(){mudaTema(2)})
+    arena3.addEventListener('click', function(){mudaTema(3)})
+    arena4.addEventListener('click', function(){mudaTema(4)})
     //submit.addEventListener('click', enviar)
     pkball[1].addEventListener('click', function(){mostra("1")})
     pkball[2].addEventListener('click', function(){mostra("2")})
@@ -258,3 +368,4 @@ function escutadores(){
 //inicialização
 window.addEventListener("load", escutadores) //Ativa os escutadores
 window.addEventListener("load", embaralhar) //Chama o embaralhamento assim que a página carrega
+window.addEventListener("load", function(){mudaTema(4)}) //Escolhe tema arena logo
