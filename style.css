@@ -63,6 +63,14 @@ section{
 
 #reinicio{
     display:none;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: monospace;
+    font-weight:bolder;
+}
+
+#reinicio:hover{
+    background-color: #ccc;
 }
 
 .flex{

@@ -4,7 +4,7 @@ let restart = document.getElementById("restart")
 let reinicio = document.getElementById("reinicio")
 let venceu = document.getElementById("venceu")
 let jogo = true
-let pontos = 8
+let pontos = 0
 let erros = 0
 let tentativa = false
 let paridade = false
@@ -12,6 +12,15 @@ let memInterior = 0
 let memOrdem
 
 var snd = new Audio("som/pokeballcut.mp3");
+let bulba = new Audio("som/bulba.mp3");
+let squi = new Audio("som/squi.mp3");
+let char = new Audio("som/char.mp3");
+let pika = new Audio("som/pika.mp3");
+let meow = new Audio("som/meow.mp3");
+let nene = new Audio("som/nene.mp3");
+let eve = new Audio("som/eve.mp3");
+let nem = new Audio("som/nem.mp3");
+let ei = new Audio("som/ei.mp3");
 
 
 let luvdisk = new Array(10)
@@ -144,30 +153,48 @@ function confereParidade(interior, ordem){
 async function mostraPokemon(ordem, interior){
     switch(interior){
         case 1:
+            bulba.currentTime=0;
+            bulba.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/001.png")'
             break;
         case 2:
+            char.currentTime=0;
+            char.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/004.png")'
             break;    
         case 3:
+            squi.currentTime=0;
+            squi.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/007.png")'
             break;
         case 4:
+            pika.currentTime=0;
+            pika.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/025.png")'
             break;
         case 5:
+            nene.currentTime=0;
+            nene.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/029.png")'
             break;
         case 6:
+            nem.currentTime=0;
+            nem.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/032.png")'
             break;
         case 7:
+            meow.currentTime=0;
+            meow.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/052.png")'
             break;
         case 8:
+            eve.currentTime=0;
+            eve.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/133.png")'
             break;
         case 9:
+            ei.currentTime=0;
+            ei.play();
             pkball[ordem].style.backgroundImage = 'url("imagens/147.png")'
             break;
         default:
@@ -190,9 +217,6 @@ function testaPkball(ordem, interior){
     //Confere se caixa já foi clicada
     if( box[ordem-1] == 0){//não clicada ainda
         box[ordem-1] = 1
-
-        snd.currentTime=0;
-        snd.play();
 
         mostraPokemon(ordem, interior)
 
