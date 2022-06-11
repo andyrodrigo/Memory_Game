@@ -43,6 +43,11 @@ nav{
 } 
 
 section{
+    /*
+    background-image: url("imagens/BG-arena.png");
+    background-image: url("imagens/BG-iniciais3.jpg");
+    
+    */
     background-image: url("imagens/BG-arena.png");
     background-size: cover;
     min-height: 800px;

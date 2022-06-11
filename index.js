@@ -1,17 +1,26 @@
 //Variáveis-------------------------------------------
 
-let restart = document.getElementById("restart")
-let reinicio = document.getElementById("reinicio")
-let venceu = document.getElementById("venceu")
-let jogo = true
-let pontos = 0
-let erros = 0
-let tentativa = false
-let paridade = false
-let memInterior = 0
-let memOrdem
+//botões do jogo
+let restart = document.getElementById("restart") // Na navegação
+let reinicio = document.getElementById("reinicio") //Só aparece ao perder
 
-var snd = new Audio("som/pokeballcut.mp3");
+//controles do jogo
+let jogo = true //diz se o jogo está ativo
+let pontos = 0 //pontuação para a vitória
+let erros = 0 //quantidade de erros para perder
+let tentativa = false //controla o tempo de clique, evita descontrole
+let paridade = false //indica se é o momento de procurar um par
+let memInterior = 0 //guarda o valor do interior da bola que se procura o par
+let memOrdem //guarda o valor da posição da bola que se procura o par
+
+
+let tematica = 'arena'
+//let bola = 'url("imagens/pokeball.png")'
+//let bola = 'url("imagens/fastball.png")'
+//let bola = 'url("imagens/greatball.png")'
+let bola = 'url("imagens/ultraball.png")'
+
+//sons ao mostrar cada pokemon
 let bulba = new Audio("som/bulba.mp3");
 let squi = new Audio("som/squi.mp3");
 let char = new Audio("som/char.mp3");
@@ -22,8 +31,11 @@ let eve = new Audio("som/eve.mp3");
 let nem = new Audio("som/nem.mp3");
 let ei = new Audio("som/ei.mp3");
 
+//Imagens da tela
+let venceu = document.getElementById("venceu") // Imagem de vitória final
 
-let luvdisk = new Array(10)
+//Imagens das quantidades de tentativas do jogo
+let luvdisk = new Array(10) //Cada elemento é um Luvdisk da tela
 luvdisk[1] = document.getElementById("L1")
 luvdisk[2] = document.getElementById("L2")
 luvdisk[3] = document.getElementById("L3")
@@ -35,8 +47,8 @@ luvdisk[8] = document.getElementById("L8")
 luvdisk[9] = document.getElementById("L9")
 luvdisk[10] = document.getElementById("L10")
 
-let pkball = new Array(18)
-
+//Imagens das pokebolas
+let pkball = new Array(18) //Cada elemento é uma pokebola da tela
 pkball[1] = document.getElementById("pk01")
 pkball[2] = document.getElementById("pk02")
 pkball[3] = document.getElementById("pk03")
@@ -56,30 +68,26 @@ pkball[16] = document.getElementById("pk16")
 pkball[17] = document.getElementById("pk17")
 pkball[18] = document.getElementById("pk18")
 
-let pokemon = new Array(18)
-let box = new Array(18)
+//Ordem da pokebolas e pokemons no interior
+let pokemon = new Array(18) //guarda os valores dos 9 pokemon dentro de cada pokebola
+// 1 (Bulbasaur); 2 (Charmander); 3 (Squirtle); 4 (Pikachu); 5 (Meowth)
+// 6 (Nidoran F); 7 (Nidoran M); 8 (Eevee); 9 (Dratiny)
 pokemon = [1,2,3,4,5,6,7,8,9,9,8,7,6,5,4,3,2,1]
+let box = new Array(18) // Indica se a pokebola est´aberta ou não (0 = fechada; 1 = aberta)
 box =     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
+//Funções----------------------------------------------------------
 
-
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
-}
-
+//Chamada para iniciar ou reiniciar o jogo
 function iniciar(){
     ajustaCenario()
     jogo = true
-    venceu.style.display = "none";
+    venceu.style.display = "none"; //tira a imagem de vitória, caso esteja
 }
 
+//Ajusta o cenário inicial do jogo
 function ajustaCenario(){
-    reinicio.style.display = 'none';
+    reinicio.style.display = 'none'; //tira o botão de reinicio, caso esteja
     pontos = 0
     erros = 0
     tentativa = false
@@ -90,154 +98,16 @@ function ajustaCenario(){
     }
     for(i=0; i<18 ; i++){
         box[i] = 0
-        pkball[i+1].style.backgroundImage = 'url("imagens/pokeball.png")'
+        pkball[i+1].style.backgroundImage = bola
     }
 }
 
+//Embaralhaa os pokemons dentro das pokebolas
 function embaralhar(){
     pokemon.sort(()=> Math.random() - 0.5);
 }
 
-function buscaParidade(interior, ordem){
-    //alert("procura o par")
-    paridade = true;
-    memInterior = interior
-    memOrdem = ordem
-    tentativa = false // libera para tentar de novo
-    //alert(memOrdem)
-}
-
-function retornar(ordem){
-    pkball[memOrdem].style.backgroundImage = 'url("imagens/pokeball.png")'
-    pkball[ordem].style.backgroundImage = 'url("imagens/pokeball.png")'
-    box[ordem-1] = 0
-    box[memOrdem-1] = 0
-    tentativa = false // libera para tentar de novo
-}
-
-function alertar(num) {
-    alert('foi' + num)
-}
-
-function fimDojogo(){
-    if(pontos == 9){
-        venceu.style.display = "flex";
-        //alert('Parabéns')
-    }else if(erros == 10){
-        reinicio.style.display = 'block';
-        jogo = false
-        //alert('Você perdeu')
-    }
-}
-
-function apagaCoracao(){
-    luvdisk[erros].style.display = 'none';
-}
-
-function confereParidade(interior, ordem){
-    if(memInterior == interior){
-        //alert("você acertou")
-        pontos++
-        tentativa = false // libera para tentar de novo
-    }else{
-        //alert("errou!")
-        erros++
-        apagaCoracao()
-        setTimeout(function(){retornar(ordem)} , 1000);
-        //sleep(5000)
-    }
-    paridade = false;
-    fimDojogo()
-}
-
-async function mostraPokemon(ordem, interior){
-    switch(interior){
-        case 1:
-            bulba.currentTime=0;
-            bulba.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/001.png")'
-            break;
-        case 2:
-            char.currentTime=0;
-            char.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/004.png")'
-            break;    
-        case 3:
-            squi.currentTime=0;
-            squi.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/007.png")'
-            break;
-        case 4:
-            pika.currentTime=0;
-            pika.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/025.png")'
-            break;
-        case 5:
-            nene.currentTime=0;
-            nene.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/029.png")'
-            break;
-        case 6:
-            nem.currentTime=0;
-            nem.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/032.png")'
-            break;
-        case 7:
-            meow.currentTime=0;
-            meow.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/052.png")'
-            break;
-        case 8:
-            eve.currentTime=0;
-            eve.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/133.png")'
-            break;
-        case 9:
-            ei.currentTime=0;
-            ei.play();
-            pkball[ordem].style.backgroundImage = 'url("imagens/147.png")'
-            break;
-        default:
-            alert("erro")            
-    }
-}
-
-function paraSom(){
-    snd.pause()
-    snd.currentTime=0;
-}
-
-function toca(){
-    snd.play();
-}
-
-
-function testaPkball(ordem, interior){
-
-    //Confere se caixa já foi clicada
-    if( box[ordem-1] == 0){//não clicada ainda
-        box[ordem-1] = 1
-
-        mostraPokemon(ordem, interior)
-
-        //alert("numero: " + ordem + " interior: " + interior)
-
-        //if true? esse :else este
-        paridade? confereParidade(interior, ordem) : buscaParidade(interior, ordem)
-/*
-        if(paridade == false){
-            buscaParidade(interior, ordem)
-        }else{
-            confereParidade(interior, ordem)
-        }*/
-
-    }else{
-       // alert("Já foi clicada")
-       tentativa = false // libera para tentar de novo
-    }
-
-}
-
+//Chamada ao clicar em alguma pokebola; recebe o numero da pokebola clicada
 function mostra(num){
     if(jogo){
         if(tentativa == false){
@@ -254,7 +124,110 @@ function mostra(num){
     }
 }
 
+//Verifica qual ação tomas após clicar na pokebola
+function testaPkball(ordem, interior){
+    if( box[ordem-1] == 0){//Caixa não clicada ainda
+        box[ordem-1] = 1 //marca como clicada
+        mostraPokemon(ordem, interior)
+        paridade? confereParidade(interior, ordem) : buscaParidade(interior, ordem)//true? if :else
+    }else{//Já foi clicada
+       tentativa = false // libera para tentar de novo
+    }
+}
 
+//Coloca a imagem do pokemon no interior e o som dele
+function mostraPokemon(ordem, interior){
+    switch(interior){
+        case 1: //bulbasaur
+            bulba.currentTime=0;
+            bulba.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/001.png")'
+            break;
+        case 2: //chamander
+            char.currentTime=0;
+            char.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/004.png")'
+            break;    
+        case 3: //squirtle
+            squi.currentTime=0;
+            squi.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/007.png")'
+            break;
+        case 4: //pikachu
+            pika.currentTime=0;
+            pika.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/025.png")'
+            break;
+        case 5: //nidoran F
+            nene.currentTime=0;
+            nene.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/029.png")'
+            break;
+        case 6: //nidoran M
+            nem.currentTime=0;
+            nem.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/032.png")'
+            break;
+        case 7: //Meowth
+            meow.currentTime=0;
+            meow.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/052.png")'
+            break;
+        case 8: //Eevee
+            eve.currentTime=0;
+            eve.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/133.png")'
+            break;
+        case 9: //Dratiny
+            ei.currentTime=0;
+            ei.play();
+            pkball[ordem].style.backgroundImage = 'url("imagens/147.png")'
+            break;
+        default:
+            alert("erro")            
+    }
+}
+
+//Ativa o modo de buscar a paridade do próximo clique e registra nas memórias
+function buscaParidade(interior, ordem){
+    paridade = true;
+    memInterior = interior
+    memOrdem = ordem
+    tentativa = false // libera para tentar de novo
+}
+
+//Verifica se acertou a paridade
+function confereParidade(interior, ordem){
+    if(memInterior == interior){ //acerto
+        pontos++
+        tentativa = false // libera para tentar de novo
+    }else{
+        erros++
+        luvdisk[erros].style.display = 'none'; //apagaCoracao
+        setTimeout(function(){retornar(ordem)} , 1000);
+    }
+    paridade = false;
+    fimDojogo()
+}
+
+//Coloca os pokemon de volta na pokebola após o erro
+function retornar(ordem){
+    pkball[memOrdem].style.backgroundImage = bola
+    pkball[ordem].style.backgroundImage = bola
+    box[ordem-1] = 0
+    box[memOrdem-1] = 0
+    tentativa = false // libera para tentar de novo
+}
+
+//Encerra a partida, após Ganhar ou Perder
+function fimDojogo(){
+    if(pontos == 9){ //Venceu o jogo
+        venceu.style.display = "flex"; //Exibe imagem de vitória
+    }else if(erros == 10){ //Perdeu o jogo
+        reinicio.style.display = 'block'; //Mostra botão de reinicio
+        jogo = false //Paralisa o jogo
+    }
+}
 
 //Escutadores---------------------------------------------------------------------------
 function escutadores(){
@@ -279,11 +252,9 @@ function escutadores(){
     pkball[16].addEventListener('click', function(){mostra("16")})
     pkball[17].addEventListener('click', function(){mostra("17")})
     pkball[18].addEventListener('click', function(){mostra("18")})
-
-
 }
 //--------------------------------------------------------------------------------------
 
 //inicialização
-window.addEventListener("load", escutadores)
-window.addEventListener("load", embaralhar)
+window.addEventListener("load", escutadores) //Ativa os escutadores
+window.addEventListener("load", embaralhar) //Chama o embaralhamento assim que a página carrega
