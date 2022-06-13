@@ -4,12 +4,15 @@
 let restart = document.getElementById("restart") // Na navegação
 let reinicio = document.getElementById("reinicio") //Só aparece ao perder
 let tema = document.getElementById("tema") //Abre menu de temas com a pokedex
-let pokedex= document.getElementById("pokedex") //Menu de arenas
+let sobre = document.getElementById("sobre") //Abre menu sobre o jogo
+let temadex= document.getElementById("temadex") //Menu de arenas
 let cancelar= document.getElementById("cancelar") //
 let arena1= document.getElementById("arena1") //
 let arena2= document.getElementById("arena2") //
 let arena3= document.getElementById("arena3") //
 let arena4= document.getElementById("arena4") //
+let sobredex= document.getElementById("sobredex") //Sobre o jogo
+let fecha= document.getElementById("fecha") //
 
 //controles do jogo
 let jogo = true //diz se o jogo está ativo
@@ -103,6 +106,7 @@ function mudaTema(num){
             energia.style.backgroundColor = 'transparent'
             energia.style.width = '100%'
             musica1.controls = true;
+            musica1.currentTime=0;
             musica1.play()
             musica2.controls = false;
             musica2.pause()
@@ -121,6 +125,7 @@ function mudaTema(num){
            musica1.controls = false;
            musica1.pause()
            musica2.controls = true;
+           musica2.currentTime=0;
            musica2.play()
            musica3.controls = false;
            musica3.pause()
@@ -140,6 +145,7 @@ function mudaTema(num){
            musica2.controls = false;
            musica2.pause()
            musica3.controls = true;
+           musica3.currentTime=0;
            musica3.play()
            musica4.controls = false;
            musica4.pause()
@@ -159,6 +165,7 @@ function mudaTema(num){
             musica3.controls = false;
             musica3.pause()
             musica4.controls = true;
+            musica4.currentTime=0;
             musica4.play()
             totalErros = 8
             break;
@@ -166,16 +173,29 @@ function mudaTema(num){
             alert("erro")            
     }
     cancela()
+    fechar()
     iniciar()
 }
 
 //Tira a pokedex da frente
 function cancela(){
-   pokedex.style.display = 'none'
+   temadex.style.display = 'none'
+}
+
+//Tira a pokedex da frente
+function fechar(){
+    sobredex.style.display = 'none'
+}
+
+//Abre o menu Sobre
+function abreSobre(){
+    cancela()
+    sobredex.style.display = 'inline'
 }
 
 function escolheTemas(){
-    pokedex.style.display = 'inline'
+    fechar()
+    temadex.style.display = 'inline'
 }
 
 //Chamada para iniciar ou reiniciar o jogo
@@ -339,6 +359,8 @@ function escutadores(){
     restart.addEventListener('click', iniciar)
     cancelar.addEventListener('click', cancela)
     tema.addEventListener('click', escolheTemas)
+    sobre.addEventListener('click', abreSobre)
+    fecha.addEventListener('click', fechar)
     arena1.addEventListener('click', function(){mudaTema(1)})
     arena2.addEventListener('click', function(){mudaTema(2)})
     arena3.addEventListener('click', function(){mudaTema(3)})

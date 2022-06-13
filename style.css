@@ -21,8 +21,7 @@ h1{
     font-family: monospace;
 }
 
-nav{
-    
+nav{   
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -124,8 +123,7 @@ section{
     -webkit-text-stroke-color:silver;
 }
 
-#pokedex {
-    display: inline;
+.pokedex {
     background-image: url('imagens/pokedex.jpg');
     background-size: cover;
     position: fixed;
@@ -139,6 +137,14 @@ section{
     border-radius: 20px;
     border: 1px solid black;
     font-family: monospace;
+}
+
+#sobredex{
+    display: none;
+}
+
+#temadex{
+    display: none;
 }
 
 h2{
@@ -174,7 +180,7 @@ h2{
     background-image: url('imagens/BG-arena.png')
 }
     
-#tela{
+.teladex{
     margin-top: 3%;
     margin-left: 10%;
     background-color: #ccc;
@@ -183,6 +189,13 @@ h2{
     border: 2px solid black;
     border-radius: 2px;
     background-size: cover;
+}
+
+#texto{
+    width: 90%;
+    height: 22%;
+    padding-top: 10px;
+    margin: auto;
 }
 
 #trophy{
