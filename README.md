@@ -1,7 +1,7 @@
 # Memory_Game
 Um jogo de memória responsivo no tema Pokemon.
 
-O jogo tem 4 temas cada um com um diferente do nível de dificuldade:
+O jogo tem 4 temas cada um com um diferente nível de dificuldade:
 * Pikachu           (Fácil)      - 15 tentativas
 * Pokemons Iniciais (Médio)      - 12 tentativas
 * Região Kanto      (Difícil)    - 10 tentativas
