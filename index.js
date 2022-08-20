@@ -1,16 +1,21 @@
 //Variáveis-------------------------------------------
 
 //botões do jogo
+let telaInicial = document.getElementById("telaInicial") // pokedex inicial
 let restart = document.getElementById("restart") // Na navegação
 let reinicio = document.getElementById("reinicio") //Só aparece ao perder
 let tema = document.getElementById("tema") //Abre menu de temas com a pokedex
 let sobre = document.getElementById("sobre") //Abre menu sobre o jogo
 let temadex= document.getElementById("temadex") //Menu de arenas
 let cancelar= document.getElementById("cancelar") //
-let arena1= document.getElementById("arena1") //
-let arena2= document.getElementById("arena2") //
-let arena3= document.getElementById("arena3") //
-let arena4= document.getElementById("arena4") //
+let arena1a= document.getElementById("arena1a") // opção de arena 1
+let arena2a= document.getElementById("arena2a") // opção de arena 2
+let arena3a= document.getElementById("arena3a") // opção de arena 3
+let arena4a= document.getElementById("arena4a") // opção de arena 4
+let arena1b= document.getElementById("arena1b") // opção de arena 1
+let arena2b= document.getElementById("arena2b") // opção de arena 2
+let arena3b= document.getElementById("arena3b") // opção de arena 3
+let arena4b= document.getElementById("arena4b") // opção de arena 4
 let sobredex= document.getElementById("sobredex") //Sobre o jogo
 let fecha= document.getElementById("fecha") //
 
@@ -180,6 +185,7 @@ function mudaTema(num){
 //Tira a pokedex da frente
 function cancela(){
    temadex.style.display = 'none'
+   telaInicial.style.display = 'none'
 }
 
 //Tira a pokedex da frente
@@ -361,10 +367,14 @@ function escutadores(){
     tema.addEventListener('click', escolheTemas)
     sobre.addEventListener('click', abreSobre)
     fecha.addEventListener('click', fechar)
-    arena1.addEventListener('click', function(){mudaTema(1)})
-    arena2.addEventListener('click', function(){mudaTema(2)})
-    arena3.addEventListener('click', function(){mudaTema(3)})
-    arena4.addEventListener('click', function(){mudaTema(4)})
+    arena1a.addEventListener('click', function(){mudaTema(1)})
+    arena2a.addEventListener('click', function(){mudaTema(2)})
+    arena3a.addEventListener('click', function(){mudaTema(3)})
+    arena4a.addEventListener('click', function(){mudaTema(4)})
+    arena1b.addEventListener('click', function(){mudaTema(1)})
+    arena2b.addEventListener('click', function(){mudaTema(2)})
+    arena3b.addEventListener('click', function(){mudaTema(3)})
+    arena4b.addEventListener('click', function(){mudaTema(4)})
     //submit.addEventListener('click', enviar)
     pkball[1].addEventListener('click', function(){mostra("1")})
     pkball[2].addEventListener('click', function(){mostra("2")})
@@ -390,4 +400,4 @@ function escutadores(){
 //inicialização
 window.addEventListener("load", escutadores) //Ativa os escutadores
 window.addEventListener("load", embaralhar) //Chama o embaralhamento assim que a página carrega
-window.addEventListener("load", function(){mudaTema(4)}) //Escolhe tema arena logo
+//window.addEventListener("load", function(){mudaTema(4)}) //Escolhe tema arena logo
