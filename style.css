@@ -1,238 +1,246 @@
-*{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    text-decoration: none;
-    list-style: none;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
 }
 
-#telaInicial{
-    display: flex;
-    justify-content: center;
-    background-color: rgb(0, 0, 0, 0.5);
-    position: absolute;
-    width: 100vw;
-    height: 137vh;
+#telaInicial {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100vw;
+  height: 137vh;
 }
 
-#temadexInicial{
-    background-image: url('imagens/pokedex.jpg');
-    background-size: cover;
-    width: 300px;
-    height: 450px;
-    margin-top: 10px;
-    color: white;
-    background-color: #a62c2b;
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid black;
-    font-family: monospace;
+#temadexInicial {
+  background-image: url("imagens/pokedex.jpg");
+  background-size: cover;
+  width: 300px;
+  height: 450px;
+  margin-top: 10px;
+  color: white;
+  background-color: #a62c2b;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-family: monospace;
 }
 
-header{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: rgb(34, 38, 46);
-    color: white;
-    justify-content: space-around;
-    align-content: center;
+header {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(34, 38, 46);
+  color: white;
+  justify-content: space-around;
+  align-content: center;
 }
 
-h1{
-    align-self: center;
-    padding: 10px ;
-    font-family: monospace;
+h1 {
+  align-self: center;
+  padding: 10px;
+  font-family: monospace;
 }
 
-nav{   
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: stretch;
-    font-size: larger;
-    font-family: monospace;
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: stretch;
+  font-size: larger;
+  font-family: monospace;
 }
 
-.conf{
-    padding: 10px;
+.conf {
+  padding: 10px;
 }
 
-.conf:hover{
-    color: black;
-    background-color: #ccc;
-    cursor: pointer;
-} 
-
-section{
-    background-image: url("imagens/BG-arena.png");
-    background-size: cover;
-    min-height: 800px;
+.conf:hover {
+  color: black;
+  background-color: #ccc;
+  cursor: pointer;
 }
 
-#musica1{
-    display: 'none';
+#fundo {
+  background-image: url("imagens/BG-arena.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 800px;
 }
 
-#energia{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    background-color: transparent;
-    border-radius: 10px;
+#musica1 {
+  display: "none";
 }
 
-.life{
-    width: 50px;
-    height:50px;
+#energia {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border-radius: 10px;
 }
 
-#reinicio{
-    display:none;
-    border-radius: 10px;
-    padding: 10px;
-    font-family: monospace;
-    font-weight:bolder;
+.life {
+  min-width: 10px;
+  min-height: 10px;
+  width: 10vw;
+  height: 10vw;
+  max-width: 50px;
+  max-height: 50px;
 }
 
-#reinicio:hover{
-    background-color: #ccc;
+#reinicio {
+  display: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: monospace;
+  font-weight: bolder;
 }
 
-.flex{
-    max-width: 900px;
-    min-height: 400px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    border-radius: 20px;
-    overflow: hidden;
-    background-color: rgb(34, 38, 46);
+#reinicio:hover {
+  background-color: #ccc;
 }
 
-.item{
-    width: 150px;
-    height: 150px;
-    background-image: url("imagens/pokeball.png") ;
-    background-size: 150px;
+.flex {
+  max-width: 900px;
+  min-height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  /* background-color: rgb(34, 38, 46); */
 }
 
-.item:hover{
-    background-color: #ccc;
-    cursor: pointer;
+.item {
+  min-width: 50px;
+  min-height: 50px;
+  width: 20vw;
+  height: 20vw;
+  max-width: 150px;
+  max-height: 150px;
+  background-image: url("imagens/pokeball.png");
+  background-size: 100%;
 }
 
-#venceu{
-    margin: 1%;
-    position: absolute;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    height: 300px;
-    background-color: goldenrod;
-    border: 10px solid silver;
-    border-radius: 50%;
-    font-family: fantasy;
-    color: purple;
-    font-size: 200%;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color:silver;
+.item:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+#venceu {
+  margin: 1%;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  background-color: goldenrod;
+  border: 10px solid silver;
+  border-radius: 50%;
+  font-family: fantasy;
+  color: purple;
+  font-size: 200%;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: silver;
 }
 
 .pokedex {
-    background-image: url('imagens/pokedex.jpg');
-    background-size: cover;
-    position: fixed;
-    width: 300px;
-    height: 450px;
-    right: 1%;
-    top: 9%;
-    color: white;
-    background-color: #a62c2b;
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid black;
-    font-family: monospace;
+  background-image: url("imagens/pokedex.jpg");
+  background-size: cover;
+  position: fixed;
+  width: 300px;
+  height: 450px;
+  right: 1%;
+  top: 9%;
+  color: white;
+  background-color: #a62c2b;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-family: monospace;
 }
 
-#sobredex{
-    display: none;
+#sobredex {
+  display: none;
 }
 
-#temadex{
-    display: none;
+#temadex {
+  display: none;
 }
 
-h2{
-    padding-top: 32% ;
-    color: yellow;
-    padding-left: 5%;
-    padding-bottom: 0%;
+h2 {
+  padding-top: 32%;
+  color: yellow;
+  padding-left: 5%;
+  padding-bottom: 0%;
 }
-.linha{
-    padding-top: 10px;
-    width: 500px;
-    padding-left: 10%;
-    font-size: larger;
-}
-
-.linha:hover{
-    font-weight: bolder;
-    color: goldenrod;
-    cursor: pointer;
+.linha {
+  padding-top: 10px;
+  width: 500px;
+  padding-left: 10%;
+  font-size: larger;
 }
 
-.arena1:hover ~ #tela{
-    background-image: url('imagens/BG-pikachu.jpg')
-}
-.arena2:hover ~ #tela{
-    background-image: url('imagens/BG-iniciais.jpg')
-}
-.arena3:hover ~ #tela{
-    background-image: url('imagens/BG-kanto.png')
+.linha:hover {
+  font-weight: bolder;
+  color: goldenrod;
+  cursor: pointer;
 }
 
-.arena4:hover ~ #tela{
-    background-image: url('imagens/BG-arena.png')
+.arena1:hover ~ #tela {
+  background-image: url("imagens/BG-pikachu.jpg");
 }
-    
-.teladex{
-    margin-top: 3%;
-    margin-left: 10%;
-    background-color: #ccc;
-    width: 240px;
-    height: 150px;
-    border: 2px solid black;
-    border-radius: 2px;
-    background-size: cover;
+.arena2:hover ~ #tela {
+  background-image: url("imagens/BG-iniciais.jpg");
+}
+.arena3:hover ~ #tela {
+  background-image: url("imagens/BG-kanto.png");
 }
 
-#texto{
-    width: 90%;
-    height: 22%;
-    padding-top: 10px;
-    margin: auto;
+.arena4:hover ~ #tela {
+  background-image: url("imagens/BG-arena.png");
 }
 
-#trophy{
-    width: 80%;
-    height: 50%;
+.teladex {
+  margin-top: 3%;
+  margin-left: 10%;
+  background-color: #ccc;
+  width: 240px;
+  height: 150px;
+  border: 2px solid black;
+  border-radius: 2px;
+  background-size: cover;
 }
 
-footer{
-    display: flex;
-    justify-content: center;
-    background-color: rgb(34, 38, 46);
-    color: white;
-    padding: 10px;
-    font-size: larger;
-    font-family: monospace;
+#texto {
+  width: 90%;
+  height: 22%;
+  padding-top: 10px;
+  margin: auto;
 }
 
+#trophy {
+  width: 80%;
+  height: 50%;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(34, 38, 46);
+  color: white;
+  padding: 10px;
+  font-size: larger;
+  font-family: monospace;
+}
