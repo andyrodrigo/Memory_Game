@@ -16,7 +16,7 @@
 }
 
 #temadexInicial {
-  background-image: url("imagens/pokedex.jpg");
+  background-image: url("../imagens/pokedex.jpg");
   background-size: cover;
   width: 300px;
   height: 450px;
@@ -64,14 +64,10 @@ nav {
 }
 
 #fundo {
-  background-image: url("imagens/BG-arena.png");
+  background-image: url("../imagens/BG-arena.png");
   background-size: cover;
   background-position: center;
   min-height: 800px;
-}
-
-#musica1 {
-  display: "none";
 }
 
 #energia {
@@ -127,7 +123,7 @@ nav {
   height: 20vw;
   max-width: 150px;
   max-height: 150px;
-  background-image: url("imagens/pokeball.png");
+  background-image: url("../imagens/pokeball.png");
   background-size: 100%;
 }
 
@@ -156,7 +152,7 @@ nav {
 }
 
 .pokedex {
-  background-image: url("imagens/pokedex.jpg");
+  background-image: url("../imagens/pokedex.jpg");
   background-size: cover;
   position: fixed;
   width: 300px;
@@ -199,17 +195,17 @@ h2 {
 }
 
 .arena1:hover ~ #tela {
-  background-image: url("imagens/BG-pikachu.jpg");
+  background-image: url("../imagens/BG-pikachu.jpg");
 }
 .arena2:hover ~ #tela {
-  background-image: url("imagens/BG-iniciais.jpg");
+  background-image: url("../imagens/BG-iniciais.jpg");
 }
 .arena3:hover ~ #tela {
-  background-image: url("imagens/BG-kanto.png");
+  background-image: url("../imagens/BG-kanto.png");
 }
 
 .arena4:hover ~ #tela {
-  background-image: url("imagens/BG-arena.png");
+  background-image: url("../imagens/BG-arena.png");
 }
 
 .teladex {
